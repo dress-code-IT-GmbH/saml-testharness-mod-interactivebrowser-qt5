@@ -16,13 +16,14 @@ if __name__ == "__main__":
 
 	response = urllib2.urlopen(test_target)
 
-	autocloseurls = AutoCloseUrls()
 
+	# retrieving ./ack.txt from the server will end the test too
+	autocloseurls = AutoCloseUrls()
 	autocloseurls.add(target_path + 'ack', 200, True)
 
+	# init and run the test
 	test = TestAction(autocloseurls)
 	result = test.run(response,test_target)
-
 
 	if result:
 		print "Test: OK"
